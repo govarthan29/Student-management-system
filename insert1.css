@@ -1,0 +1,45 @@
+/* Navbar Styles */
+.navbar {
+  background-color: #000;
+  color: #fff;
+  padding: 10px;
+}
+
+.navbar-brand h3 {
+  margin: 0;
+}
+
+/* Form Styles */
+table {
+  width: 400px;
+  margin: 0 auto;
+}
+
+h1 {
+  text-align: center;
+}
+
+input[type="text"],
+input[type="submit"],
+input[type="radio"] {
+  width: 100%;
+  padding: 2px;
+  margin-bottom: 2px;
+}
+
+input[type="submit"] {
+  background-color: #820652;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+/* Button Styles */
+.btn {
+  background-color: rgb(46, 2, 67);
+  color: #fff;
+  border: none;
+  padding: 8px 15px;
+  margin-left: 5px;
+  cursor: pointer;
+}

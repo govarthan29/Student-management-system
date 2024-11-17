@@ -1,0 +1,93 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Students Data</title>
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="insert1.css">
+    <link rel="stylesheet" type="text/css" href="aaa2.css">
+    <style>
+        body {
+          background-color: rgb(46, 2, 67);
+          color: #fff;
+        }
+        th,td{
+            background-color: #000;
+        }
+        tr:hover{
+            background-color: aqua;
+        }
+      </style>
+</head>
+<body>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a href="insert1.html" class="navbar-brand">Registration Form</a>           
+                <a href="Show.html" class="navbar-brand">Students Record</a>
+                <a href="Sid.html" class="navbar-brand">Chart</a>
+                <a href="Sid_pro.html" class="navbar-brand"> Update</a>          
+        </div>  
+    </nav>
+
+    <div>
+        <h1>Students Data</h1>
+        <table class="table" >
+            <thead class="table">
+                <tr>
+                    <th>SID</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                    <th>City</th>
+                    <th>Course</th>
+                    <th>Guardian</th>
+                    <th>Subject</th>
+                    <th>Subject</th>
+                    <th>Subject</th>
+                    <th>Subject</th>
+                    <th>Subject</th>
+                    <th>Subject</th>
+                </tr>
+            </thead>
+            <tbody id="dataContainer"></tbody>
+        </table>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $.ajax({
+                url: 'Show.php',
+                type: 'GET',
+                dataType: 'json',
+                success: function(data) {
+                    var html = '';
+                    for (var i = 0; i < data.length; i++) {
+                        html += '<tr>';
+                        html += '<td>' + data[i].SID + '</td>';
+                        html += '<td>' + data[i].FirstName + '</td>';
+                        html += '<td>' + data[i].LastName + '</td>';
+                        html += '<td>' + data[i].Email + '</td>';
+                        html += '<td>' + data[i].NearestCity + '</td>';
+                        html += '<td>' + data[i].Course + '</td>';
+                        html += '<td>' + data[i].Guardian + '</td>';
+                        html += '<td>' + data[i].Subject_1 + '</td>';
+                        html += '<td>' + data[i].Subject_2 + '</td>';
+                        html += '<td>' + data[i].Subject_3 + '</td>';
+                        html += '<td>' + data[i].Subject_4 + '</td>';
+                        html += '<td>' + data[i].Subject_5 + '</td>';
+                        html += '<td>' + data[i].Subject_6 + '</td>';
+                        html += '</tr>';
+                    }
+                    $('#dataContainer').html(html);
+                },
+                error: function() {
+                    alert('Error fetching data from MySQL.');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

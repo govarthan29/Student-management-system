@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Update</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="insert1.css">
+    <link rel="stylesheet" type="text/css" href="aaa2.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+          background-color: rgb(46, 2, 67);
+          color: #fff;
+        }
+        th,td{
+            background-color: azure;
+        }
+        tr:hover{
+            background-color: aqua;
+        }
+      </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a href="insert1.html" class="navbar-brand">Registration Form</a>           
+                <a href="Show.html" class="navbar-brand">Students Record</a>
+                <a href="Sid.html" class="navbar-brand">Chart</a>
+                <a href="Sid_pro.html" class="navbar-brand"> Update</a>         
+        </div>  
+    </nav>
+    <div >
+        <h1>Update/Delete Student Data</h1>
+        <br>
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <button  type="button" class="btn" onclick="window.location.href='Sid_pro.html'">Update by SID</button>
+            </div>
+            <div class="form-group col-md-4">
+                <button  type="button" class="btn" onclick="window.location.href='pro.html'">Update by FirstName</button>
+            </div>
+            <div class="form-group col-md-4">
+                <button  type="button" class="btn" onclick="window.location.href='Delete.html'"> Delete Student by SID </button>
+            </div>
+        </div>
+        <br>
+    
+    <form id="studentForm">
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="old">Old ID:</label>
+                <input type="text" class="form-control" id="old"  placeholder="Enter the Old SID">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="new">New ID:</label>
+                <input type="text" class="form-control" id="new"  placeholder="Enter the New SID">
+            </div>
+        </div>
+        <button type="submit" class="btn">Submit</button>
+    </form>
+
+    <div id="result"></div>
+
+    <script>
+        $(document).ready(function() {
+            $('#studentForm').submit(function(e) {
+                e.preventDefault();
+                var data = {
+                    old: $("#old").val(),
+                    new: $("#new").val()
+                };
+                var jsonData = JSON.stringify(data);
+                $.ajax({
+                    url: 'Sid_pro.php',
+                    type: 'POST',
+                    data: { jsonData: jsonData },
+                    dataType: 'json',
+                    success: function(response) {
+                        alert("Data updated successfully!");
+                        $("#studentForm")[0].reset();
+                    },
+                    });
+            });
+        });
+    </script>
+</body>
+</html>
